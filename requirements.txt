@@ -1,15 +1,27 @@
-agno>=3.1.0
-openai>=1.40.0
+# Core AI framework (installs openai, sqlalchemy[asyncio], fastapi, telebot, etc.)
+agno[os,telegram]>=3.1.0
+
+# Telegram Bot HTTP API
 pyTelegramBotAPI>=4.20.0
+
+# OpenAI SDK
+openai>=1.40.0
+
+# Configuration
 python-dotenv>=1.0.0
 requests>=2.31.0
-duckduckgo-search>=6.0.0
-ddgs>=7.0.0
-yfinance>=0.2.40
-wikipedia>=1.4.0
-arxiv>=2.1.0
-newspaper4k>=0.9.0
-lxml_html_clean>=0.4.0
-pypdf>=5.0.0
-beautifulsoup4>=4.12.0
-feedparser>=6.0.0
+
+# ---- Agent Tools ----
+ddgs>=7.0.0                   # DuckDuckGo / WebSearch (replaces duckduckgo-search)
+yfinance>=0.2.40              # Yahoo Finance (stocks, news, analyst recs)
+wikipedia>=1.4.0              # Wikipedia lookups
+arxiv>=2.1.0                  # ArXiv research papers
+newspaper4k>=0.9.0            # Full-article reader
+lxml_html_clean>=0.4.0        # HTML cleaning for newspaper4k
+pypdf>=5.0.0                  # PDF reading (used by arxiv)
+beautifulsoup4>=4.12.0        # HTML parsing
+feedparser>=6.0.0             # RSS feeds (used by HackerNews)
+nltk>=3.8                     # NLP support for newspaper4k
+
+# Ensure async SQLAlchemy works (greenlet is required for asyncio engine)
+sqlalchemy[asyncio]>=2.0.0
