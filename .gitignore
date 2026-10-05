@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Local secrets (real keys — never commit these!)
+.env.local
+.env.production
+.env.secret
+
+# Runtime
+tmp/
+*.db
+*.db-journal
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
