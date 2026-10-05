@@ -1,7 +1,9 @@
-# Core AI framework (installs openai, sqlalchemy[asyncio], fastapi, telebot, etc.)
-agno[os,telegram]>=3.1.0
+# Core AI framework (we do NOT use agno[os] to keep memory low; the bot
+# talks to Telegram directly via pyTelegramBotAPI in long-polling mode,
+# no FastAPI/AgentOS/uvicorn is required).
+agno>=3.1.0
 
-# Telegram Bot HTTP API
+# Telegram Bot HTTP API (long-polling client)
 pyTelegramBotAPI>=4.20.0
 
 # OpenAI SDK
@@ -12,16 +14,16 @@ python-dotenv>=1.0.0
 requests>=2.31.0
 
 # ---- Agent Tools ----
-ddgs>=7.0.0                   # DuckDuckGo / WebSearch (replaces duckduckgo-search)
-yfinance>=0.2.40              # Yahoo Finance (stocks, news, analyst recs)
-wikipedia>=1.4.0              # Wikipedia lookups
-arxiv>=2.1.0                  # ArXiv research papers
-newspaper4k>=0.9.0            # Full-article reader
-lxml_html_clean>=0.4.0        # HTML cleaning for newspaper4k
-pypdf>=5.0.0                  # PDF reading (used by arxiv)
-beautifulsoup4>=4.12.0        # HTML parsing
-feedparser>=6.0.0             # RSS feeds (used by HackerNews)
-nltk>=3.8                     # NLP support for newspaper4k
+ddgs>=7.0.0
+yfinance>=0.2.40
+wikipedia>=1.4.0
+arxiv>=2.1.0
+newspaper4k>=0.9.0
+lxml_html_clean>=0.4.0
+pypdf>=5.0.0
+beautifulsoup4>=4.12.0
+feedparser>=6.0.0
+nltk>=3.8
 
-# Ensure async SQLAlchemy works (greenlet is required for asyncio engine)
+# Async SQLAlchemy is required by agno's SQLite db layer
 sqlalchemy[asyncio]>=2.0.0
